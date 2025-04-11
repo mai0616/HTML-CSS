@@ -1,0 +1,519 @@
+/*=====================
+  共通
+=====================*/
+
+body {
+  color: #333;
+  font-family: "游ゴシック", YuGothic, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+  margin: 0;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+/*=====================
+  ヘッダー
+=====================*/
+
+.SiteHeader {
+  background-color: #fff;
+  display: grid;
+  height: 70px;
+  width: 100%;
+}
+
+.SiteHeader--default {
+  box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.05);
+}
+
+.SiteHeader--recruit {
+  box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.05);
+  position: absolute;
+}
+
+.SiteHeader--trial {
+  background-color: #FCFAF5;
+}
+
+.SiteHeader__container {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 36px;
+  max-width: 100%;
+  position: relative;
+}
+
+.SiteHeader__container > *:last-child {
+  display: inline-flex;
+}
+
+.SiteHeader__logo {
+  align-self: center;
+}
+
+.SiteHeader__logoImage--pc {
+  display: block;
+  height: 20px;
+  width: auto;
+}
+
+.SiteHeader__logoImage--sp {
+  display: none;
+  height: 16px;
+  width: auto;
+}
+
+.SiteHeader__nav {
+}
+
+.SiteHeader__navList {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.SiteHeader__navItem {
+  margin-right: 45px;
+}
+
+.SiteHeader__navItem:last-of-type {
+  margin-right: 0;
+}
+
+.SiteHeader__navItem--recruit {
+  margin-right: 72px;
+}
+
+.SiteHeader__navLink {
+  display: block;
+}
+
+.SiteHeader__navLink.current {
+  color: #F79214;
+}
+
+.SiteHeader__navLink > span {
+  display: block;
+  font-weight: 700;
+  text-align: center;
+}
+
+.SiteHeader__navLink > span:first-child {
+  font-family: "Lato", sans-serif;
+  font-size: 12px;
+  line-height: 14.4px;
+}
+
+.SiteHeader__navLink > span:last-child {
+  font-size: 10px;
+}
+
+.SiteHeader__navButton {
+  align-items: center;
+  background-color: #F79214;
+  border: none;
+  border-radius: 38px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  font-weight: 700;
+  height: 40px;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.SiteHeader__navButton:visited {
+  color: #fff;
+}
+
+.SiteHeader__navButton[disabled],
+.SiteHeader__navButton.disabled {
+  background-color: #BBBBBB;
+  cursor: not-allowed;
+}
+
+.SiteHeader__navButton span:first-child {
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.SiteHeader__navButton span:last-child {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.SiteHeader__hamburger {
+  display: none;
+}
+
+.SiteHeader__hamburgerLine {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #A2A2A4;
+  transform: translate(0, -50%);
+  border-radius: 10px;
+  transition: top 0.2s, transform 0.2s, opacity 0.3s;
+}
+
+.SiteHeader__hamburgerLine:first-child {
+  top: 0;
+}
+
+.SiteHeader__hamburgerLine:last-child {
+  top: 100%;
+}
+
+.is-active .SiteHeader__hamburgerLine {
+  will-change: top;
+  transform: translate(20px, -50%);
+  opacity: 0;
+}
+
+.is-active .SiteHeader__hamburgerLine:first-child {
+  top: 50%;
+  transform: translate(0, -50%) rotate(45deg);
+  opacity: 1;
+}
+
+.is-active .SiteHeader__hamburgerLine:last-child {
+  top: 50%;
+  transform: translate(0, -50%) rotate(-45deg);
+  opacity: 1;
+}
+
+/*========================
+  スマホ
+========================*/
+@media screen and (max-width: 1080px) {
+  .SiteHeader {
+    background-color: #fff;
+    z-index: 10;
+  }
+  .SiteHeader--default {
+    position: fixed !important;
+  }
+  .SiteHeader--recruit {
+    background-color: unset !important;
+    position: absolute !important;
+  }
+  .SiteHeader__navList {
+    overflow-y: scroll;
+    position: fixed;
+    top: 60px;
+    left: 100%;
+    width: 100%;
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 75px;
+    transition: transform 0.5s;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.8);
+    -webkit-overflow-scrolling: touch;
+    height: 100%;
+  }
+  .SiteHeader__navList.is-active {
+    transform: translate3d(-100%, 0, 0);
+  }
+  .SiteHeader__navList.is-scroll {
+    top: 60px;
+    bottom: 0;
+  }
+  .SiteHeader__navItem {
+    margin-right: 0;
+  }
+  .SiteHeader__navItem:last-of-type {
+    margin-top: 20px;
+  }
+  .SiteHeader__navLink {
+    padding: 20px 0;
+  }
+  .SiteHeader__navLink > span:first-child {
+    font-size: 16px;
+    letter-spacing: 5px;
+    color: #fff;
+  }
+  .SiteHeader__navLink > span:last-child {
+    font-size: 12px;
+    margin-top: 10px;
+    color: #F79214;
+    letter-spacing: 2px;
+  }
+  .SiteHeader__navButton {
+    font-size: 16px;
+    margin: 0 auto;
+    height: 60px;
+    width: 250px;
+  }
+  .SiteHeader__hamburger {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 17px;
+    margin: auto;
+    z-index: 100;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .SiteHeader {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  .SiteHeader__container {
+    max-width: 100%;
+    margin: 0 16px;
+  }
+  .SiteHeader__logoImage--pc {
+    display: none !important;
+  }
+  .SiteHeader__logoImage--sp {
+    display: block !important;
+  }
+  .SiteHeader__navList {
+    top: 70px;
+  }
+  .SiteHeader__navList.is-scroll {
+    top: 52px;
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .SiteHeader {
+    height: 48px;
+    padding: 0;
+  }
+  .SiteHeader__hamburger {
+    height: 12px;
+    width: 18px;
+  }
+  .SiteHeader__navList {
+    top: 33px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .SiteHeader__logo {
+    transition: opacity 0.2s;
+  }
+  .SiteHeader__logo:hover {
+    opacity: 0.8;
+  }
+  .SiteHeader__navItem {
+    transition: opacity 0.2s;
+  }
+  .SiteHeader__navItem:hover {
+    opacity: 0.8;
+  }
+  .SiteHeader__navButton {
+    transition: opacity 0.2s;
+  }
+  .SiteHeader__navButton:hover {
+    opacity: 0.8;
+  }
+}
+
+/*=====================
+  HeroSection Styles
+=====================*/
+
+.HeroSection {
+  position: relative;
+  height: 739px;
+}
+
+.HeroSection__background {
+}
+
+.HeroSection__bgImage {
+  position: absolute;
+  z-index: -1;
+}
+
+.HeroSection__bgImage--left {
+  top: -70px;
+  left: 0;
+}
+
+.HeroSection__bgImage--right {
+  right: 0;
+  bottom: 70px;
+}
+
+.HeroSection__bgImage--fill {
+  top: 84px;
+  left: -70px;
+}
+
+.HeroSection__bgImage--main {
+  top: -70px;
+  right: 0;
+  width: 775px;
+}
+
+.HeroSection__fullImage {
+  display: none;
+}
+
+.HeroSection__container {
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  padding-top: 219px;
+  z-index: 1;
+}
+
+.HeroSection__content {
+  position: relative;
+  width: fit-content;
+}
+
+.HeroSection__title {
+  color: #333;
+  font-family: "Lato", sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 63px;
+  margin-bottom: 16px;
+}
+
+.HeroSection__badge {
+  position: absolute;
+  top: -105px;
+  right: -150px;
+}
+
+.HeroSection__button {
+  align-items: center;
+  background-color: #F79214;
+  border: none;
+  border-radius: 38px;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-weight: 700;
+  height: 64px;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.HeroSection__button:visited {
+  color: #fff;
+}
+
+.HeroSection__button[disabled],
+.HeroSection__button.disabled {
+  background-color: #BBBBBB;
+  cursor: not-allowed;
+}
+
+.HeroSection__button span:first-child {
+  font-family: "Lato", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.HeroSection__button span:last-child {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.HeroSection__caption {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+/*========================
+  Media Queries Organized
+========================*/
+
+@media screen and (max-width: 1080px) {
+  .HeroSection__container {
+    max-width: none;
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .HeroSection {
+    height: fit-content;
+  }
+
+  .HeroSection__bgImage {
+    display: none;
+  }
+
+  .HeroSection__fullImage {
+    display: block;
+    margin-bottom: 7px;
+    width: 100%;
+    padding-top: 49px;
+  }
+
+  .HeroSection__container {
+    max-width: none;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 0;
+    padding-bottom: 20px;
+  }
+
+  .HeroSection__title {
+    font-size: 22px;
+    line-height: 36px;
+    position: relative;
+    width: fit-content;
+  }
+
+  .HeroSection__badge {
+    height: 102px;
+    width: 102px;
+    top: -20px;
+    right: -85px;
+  }
+
+  .HeroSection__button {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .HeroSection__button {
+    transition: opacity 0.2s;
+  }
+
+  .HeroSection__button:hover {
+    opacity: 0.8;
+  }
+}
